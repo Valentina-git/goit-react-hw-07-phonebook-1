@@ -13,4 +13,3 @@ export const getContactsSuccess = createAction('phonebook/getSuccess');
 export const getContactsError = createAction('phonebook/getError');
 
 export const setFilter = createAction('phonebook/setFilter');
-export const getInitialContacts = createAction('phonebook/getInitialContacts');
