@@ -32,7 +32,7 @@ export const operationGetContacts = () => async dispatch => {
       }));
 
       dispatch(getContactsSuccess(contacts));
-    }
+    } else dispatch(getContactsSuccess([]));
   } catch (error) {
     dispatch(getContactsError(error));
   }
