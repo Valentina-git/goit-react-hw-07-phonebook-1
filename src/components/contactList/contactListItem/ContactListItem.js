@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import ContactLi from './ContactListItemStyled';
 import { getFilter, getFilteredContacts } from '../../../redux/selectors/phonebookSelectors';
-import { deleteContact, setFilter } from '../../../redux/actions/phonebookActions';
+import { setFilter } from '../../../redux/actions/phonebookActions';
 import { operationDeleteContact } from '../../../redux/operations/phonebookOperations';
 const ContactListItem = ({ item }) => {
   const contacts = useSelector(getFilteredContacts);
@@ -12,7 +12,6 @@ const ContactListItem = ({ item }) => {
   const dispatch = useDispatch();
   const onHandleDelete = e => {
     const id = e.target.dataset.id;
-    // dispatch(deleteContact(id));
     dispatch(operationDeleteContact(id));
 
     if (contacts.filter(item => item.name.toLowerCase().includes(filter.toLowerCase())).length < 2) {

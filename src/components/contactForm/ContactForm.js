@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import FormWrapper from './ContactFormStyled';
 import Alert from '../alert/Alert';
@@ -35,7 +35,7 @@ const ContactForm = () => {
       showAlertMessage('Please enter a number');
       return;
     }
-    // dispatch(addNewContact(user));
+
     dispatch(operationAddContact(user));
     setState({ ...initialState });
   };

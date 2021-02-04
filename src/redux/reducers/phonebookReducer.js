@@ -4,16 +4,14 @@ import {
   addContactError,
   addContactRequest,
   addContactSuccess,
-  deleteContact,
+  deleteContactError,
+  deleteContactRequest,
   deleteContactSuccess,
-  getInitialContacts,
+  getContactsError,
+  getContactsRequest,
+  getContactsSuccess,
   setFilter,
 } from '../actions/phonebookActions';
-
-const initialState = {
-  contacts: [],
-  filter: '',
-};
 
 const onAddContact = (state, action) => [...state, action.payload];
 const onDeleteContact = (state, action) => [...state.filter(item => item.id !== action.payload)];
@@ -23,7 +21,7 @@ const onGetInitialContacts = (state, action) => [...action.payload];
 const contactsReducer = createReducer([], {
   [addContactSuccess]: onAddContact,
   [deleteContactSuccess]: onDeleteContact,
-  [getInitialContacts]: onGetInitialContacts,
+  [getContactsSuccess]: onGetInitialContacts,
 });
 const filterReducer = createReducer('', {
   [setFilter]: onSetFilter,
@@ -33,6 +31,12 @@ const loaderReducer = createReducer(false, {
   [addContactRequest]: () => true,
   [addContactSuccess]: () => false,
   [addContactError]: () => false,
+  [deleteContactRequest]: () => true,
+  [deleteContactSuccess]: () => false,
+  [deleteContactError]: () => false,
+  [getContactsRequest]: () => true,
+  [getContactsSuccess]: () => false,
+  [getContactsError]: () => false,
 });
 
 const phonebookReducer = combineReducers({

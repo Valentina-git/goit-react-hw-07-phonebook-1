@@ -6,21 +6,17 @@ import ContactListWrapper from './ContactListStyled';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { getInitialContacts } from '../../redux/actions/phonebookActions';
 import { getFilter, getFilteredContacts } from '../../redux/selectors/phonebookSelectors';
+import { operationGetContacts } from '../../redux/operations/phonebookOperations';
 
 const ContactList = () => {
   const contacts = useSelector(getFilteredContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
   useEffect(() => {
-    const contacts = localStorage.getItem('contacts');
-    if (contacts) {
-      dispatch(getInitialContacts(JSON.parse(contacts)));
-    }
+    dispatch(operationGetContacts());
     // eslint-disable-next-line
   }, []);
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+
   return (
     <ContactListWrapper>
       <TransitionGroup component="ul" className="list">
