@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import ContactListItem from './contactListItem/ContactListItem';
 import ContactListWrapper from './ContactListStyled';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { getInitialContacts } from '../../redux/actions/phonebookActions';
 import { getFilter, getFilteredContacts } from '../../redux/selectors/phonebookSelectors';
 import { operationGetContacts } from '../../redux/operations/phonebookOperations';
 
